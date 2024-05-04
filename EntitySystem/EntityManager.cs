@@ -8,7 +8,7 @@ namespace GoldFinder.EntitySystem
 {
     class EntityManager
     {
-        List<Entity> entities;
+        public List<Entity> entities;
 
         public EntityManager()
         {
@@ -23,14 +23,32 @@ namespace GoldFinder.EntitySystem
             }
         }
 
-        public void RegisterEntity(Entity entity)
+        public void AddLocation(string name)
         {
-            entities.Add(entity);
+            entities.Add(new Location(name));
         }
 
-        public void DeregisterEntity(Entity entity)
+        public void DeleteLocation(string name)
         {
-            entities.Remove(entity);
+            Entity toRemove;
+            if(GetLocationByName(name, out toRemove))
+            {
+                entities.Remove(toRemove);
+            }
+        }
+
+        public bool GetLocationByName(string name, out Entity outEntity)
+        {
+            foreach(Entity entity in entities)
+            {
+                if(entity.name == name)
+                {
+                    outEntity = entity;
+                    return true;
+                }
+            }
+            outEntity = null;
+            return false;
         }
     }
 }

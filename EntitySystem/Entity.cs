@@ -8,6 +8,13 @@ namespace GoldFinder.EntitySystem
 {
     abstract class Entity
     {
+        public string name;
+
+        public Entity(string inName)
+        {
+            name = inName;
+        }
+
         public abstract void Tick();
     }
 }

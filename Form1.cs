@@ -19,6 +19,53 @@ namespace GoldFinder
         {
             InitializeComponent();
             entityManager = new EntityManager();
+
+            LocationList.View = View.List;
+            LocationList.LabelEdit = false;
+
+            UpdateDisplay();
+        }
+
+        void UpdateDisplay()
+        {
+            LocationList.Clear();
+
+            foreach(Entity entity in entityManager.entities)
+            {
+                if (entity.GetType() == typeof(Location))
+                {
+                    LocationList.Items.Add(entity.name);
+                }
+            }
+        }
+
+        private void AddLocationButton_Click(object sender, EventArgs e)
+        {
+            entityManager.AddLocation("new location");
+            UpdateDisplay();
+        }
+
+        private void RemoveLocationButton_Click(object sender, EventArgs e)
+        {
+            entityManager.DeleteLocation(LocationList.SelectedItems[0].Text);
+            UpdateDisplay();
+        }
+
+        private void LocationList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(LocationList.SelectedItems.Count > 0)
+            {
+                LocationName.Text = LocationList.SelectedItems[0].Text;
+            }
+        }
+
+        private void LocationName_TextChanged(object sender, EventArgs e)
+        {
+            if(entityManager.GetLocationByName(LocationList.SelectedItems[0].Text, out Entity location))
+            {
+                location.name = LocationName.Text;
+                LocationList.SelectedItems[0].Text = LocationName.Text;
+            }
         }
     }
 }

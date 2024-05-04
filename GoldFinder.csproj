@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="EntitySystem\EntityManager.cs" />
     <Compile Include="EntitySystem\Entity.cs" />
+    <Compile Include="EntitySystem\Location.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
