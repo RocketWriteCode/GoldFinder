@@ -50,5 +50,26 @@ namespace GoldFinder.EntitySystem
             outEntity = null;
             return false;
         }
+
+        public Location GetLocationByName(string name)
+        {
+            if(GetLocationByName(name, out Entity entity))
+            {
+                return (Location)entity;
+            }
+            return null;
+        }
+
+        public SubLocation GetSublocationByName(string name)
+        {
+            if(GetLocationByName(name, out Entity entity))
+            {
+                if(entity.GetType() == typeof(SubLocation))
+                {
+                    return (SubLocation)entity;
+                }
+            }
+            return null;
+        }
     }
 }

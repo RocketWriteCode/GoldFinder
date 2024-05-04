@@ -67,5 +67,14 @@ namespace GoldFinder
                 LocationList.SelectedItems[0].Text = LocationName.Text;
             }
         }
+
+        private void EditSublocationsButton_Click(object sender, EventArgs e)
+        {
+            if(LocationList.SelectedItems.Count > 0)
+            {
+                SubLocationsMenu subLocations = new SubLocationsMenu(entityManager.GetLocationByName(LocationList.SelectedItems[0].Text));
+                subLocations.Show();
+            }
+        }
     }
 }

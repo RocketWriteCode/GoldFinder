@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace GoldFinder.EntitySystem
 {
-    public class Location : Entity
+    public class SubLocation : Entity
     {
-        List<Entity> SubLocations;
-
-        public Location(string inName) : base(inName)
+        public SubLocation(string inName) : base(inName)
         {
-            SubLocations = new List<Entity>();
+
         }
 
         public override void Tick()

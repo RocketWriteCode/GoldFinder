@@ -33,6 +33,7 @@ namespace GoldFinder
             this.AddLocationButton = new System.Windows.Forms.Button();
             this.RemoveLocationButton = new System.Windows.Forms.Button();
             this.LocationName = new System.Windows.Forms.TextBox();
+            this.EditSublocationsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LocationList
@@ -73,11 +74,22 @@ namespace GoldFinder
             this.LocationName.TabIndex = 2;
             this.LocationName.TextChanged += new System.EventHandler(this.LocationName_TextChanged);
             // 
+            // EditSublocationsButton
+            // 
+            this.EditSublocationsButton.Location = new System.Drawing.Point(421, 42);
+            this.EditSublocationsButton.Name = "EditSublocationsButton";
+            this.EditSublocationsButton.Size = new System.Drawing.Size(217, 23);
+            this.EditSublocationsButton.TabIndex = 3;
+            this.EditSublocationsButton.Text = "Edit Sub-Locations";
+            this.EditSublocationsButton.UseVisualStyleBackColor = true;
+            this.EditSublocationsButton.Click += new System.EventHandler(this.EditSublocationsButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 625);
+            this.ClientSize = new System.Drawing.Size(646, 625);
+            this.Controls.Add(this.EditSublocationsButton);
             this.Controls.Add(this.LocationName);
             this.Controls.Add(this.RemoveLocationButton);
             this.Controls.Add(this.AddLocationButton);
@@ -95,6 +107,7 @@ namespace GoldFinder
         private System.Windows.Forms.Button AddLocationButton;
         private System.Windows.Forms.Button RemoveLocationButton;
         private System.Windows.Forms.TextBox LocationName;
+        private System.Windows.Forms.Button EditSublocationsButton;
     }
 }
 

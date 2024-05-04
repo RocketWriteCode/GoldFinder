@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoldFinder.EntitySystem
 {
-    abstract class Entity
+    public abstract class Entity
     {
         public string name;
 
