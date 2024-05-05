@@ -14,6 +14,7 @@ namespace GoldFinder
     public partial class Form1 : Form
     {
         readonly LocationManager locationManager;
+        ListViewItem currentSelection;
 
         public Form1()
         {
@@ -40,6 +41,8 @@ namespace GoldFinder
         {
             locationManager.AddLocation("new location");
             UpdateDisplay();
+            currentSelection = LocationList.FindItemWithText("new location");
+            LocationName.Text = currentSelection.Text;
         }
 
         private void RemoveLocationButton_Click(object sender, EventArgs e)
@@ -58,28 +61,29 @@ namespace GoldFinder
             if(LocationList.SelectedItems.Count > 0)
             {
                 LocationName.Text = LocationList.SelectedItems[0].Text;
+                currentSelection = LocationList.SelectedItems[0];
             }
         }
 
         private void LocationName_TextChanged(object sender, EventArgs e)
         {
-            if(LocationList.SelectedItems.Count <= 0)
+            if(currentSelection == null)
             {
                 return;
             }
 
-            if(locationManager.GetLocationByName(LocationList.SelectedItems[0].Text, out Location location))
+            if(locationManager.GetLocationByName(currentSelection.Text, out Location location))
             {
                 location.name = LocationName.Text;
-                LocationList.SelectedItems[0].Text = LocationName.Text;
+                currentSelection.Text = LocationName.Text;
             }
         }
 
         private void EditSublocationsButton_Click(object sender, EventArgs e)
         {
-            if(LocationList.SelectedItems.Count > 0)
+            if(currentSelection != null)
             {
-                SubLocationsMenu subLocations = new SubLocationsMenu(locationManager.GetLocationByName(LocationList.SelectedItems[0].Text));
+                SubLocationsMenu subLocations = new SubLocationsMenu(locationManager.GetLocationByName(currentSelection.Text));
                 subLocations.Show();
             }
         }

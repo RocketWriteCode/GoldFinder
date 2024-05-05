@@ -31,6 +31,8 @@ namespace GoldFinder
         {
             currentLocation.AddSublocation("New Sublocation");
             UpdateDisplay();
+            currentSelection = SubLocationList.FindItemWithText("New Sublocation");
+            SublocationNameField.Text = currentSelection.Text;
         }
 
         private void RemoveSublocationButton_Click(object sender, EventArgs e)
