@@ -33,6 +33,7 @@ namespace GoldFinder
             this.SubLocationList = new System.Windows.Forms.ListView();
             this.AddSublocationButton = new System.Windows.Forms.Button();
             this.RemoveSublocationButton = new System.Windows.Forms.Button();
+            this.SublocationNameField = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // LocationName
@@ -52,6 +53,7 @@ namespace GoldFinder
             this.SubLocationList.Size = new System.Drawing.Size(162, 409);
             this.SubLocationList.TabIndex = 1;
             this.SubLocationList.UseCompatibleStateImageBehavior = false;
+            this.SubLocationList.SelectedIndexChanged += new System.EventHandler(this.SubLocationList_SelectedIndexChanged);
             // 
             // AddSublocationButton
             // 
@@ -73,11 +75,20 @@ namespace GoldFinder
             this.RemoveSublocationButton.UseVisualStyleBackColor = true;
             this.RemoveSublocationButton.Click += new System.EventHandler(this.RemoveSublocationButton_Click);
             // 
+            // SublocationNameField
+            // 
+            this.SublocationNameField.Location = new System.Drawing.Point(318, 29);
+            this.SublocationNameField.Name = "SublocationNameField";
+            this.SublocationNameField.Size = new System.Drawing.Size(174, 20);
+            this.SublocationNameField.TabIndex = 3;
+            this.SublocationNameField.TextChanged += new System.EventHandler(this.SublocationNameField_TextChanged);
+            // 
             // SubLocationsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.SublocationNameField);
             this.Controls.Add(this.RemoveSublocationButton);
             this.Controls.Add(this.AddSublocationButton);
             this.Controls.Add(this.SubLocationList);
@@ -95,5 +106,6 @@ namespace GoldFinder
         private System.Windows.Forms.ListView SubLocationList;
         private System.Windows.Forms.Button AddSublocationButton;
         private System.Windows.Forms.Button RemoveSublocationButton;
+        private System.Windows.Forms.TextBox SublocationNameField;
     }
 }

@@ -13,7 +13,8 @@ namespace GoldFinder
 {
     public partial class SubLocationsMenu : Form
     {
-        Location currentLocation;
+        readonly Location currentLocation;
+        ListViewItem currentSelection;
 
         public SubLocationsMenu(Location inLocation)
         {
@@ -22,9 +23,7 @@ namespace GoldFinder
             LocationName.Text = inLocation.name;
 
             SubLocationList.View = View.List;
-            SubLocationList.MultiSelect = false;
             SubLocationList.LabelEdit = false;
-
             currentLocation = inLocation;
         }
 
@@ -52,6 +51,31 @@ namespace GoldFinder
             foreach (SubLocation subLocation in currentLocation.subLocations)
             {
                 SubLocationList.Items.Add(subLocation.name);
+            }
+        }
+
+        private void SublocationNameField_TextChanged(object sender, EventArgs e)
+        {
+            if (currentSelection == null)
+            {
+                return;
+            }
+
+            if (currentLocation.GetSublocationByName(currentSelection.Text, out SubLocation subLocation))
+            {
+                subLocation.name = SublocationNameField.Text;
+                currentSelection.Text = SublocationNameField.Text;
+            }
+
+            UpdateDisplay();
+        }
+
+        private void SubLocationList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(SubLocationList.SelectedItems.Count > 0)
+            {
+                SublocationNameField.Text = SubLocationList.SelectedItems[0].Text;
+                currentSelection = SubLocationList.SelectedItems[0];
             }
         }
     }

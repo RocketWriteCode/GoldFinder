@@ -30,8 +30,7 @@ namespace GoldFinder.EntitySystem
 
         public void DeleteLocation(string name)
         {
-            Location toRemove;
-            if(GetLocationByName(name, out toRemove))
+            if(GetLocationByName(name, out Location toRemove))
             {
                 locations.Remove(toRemove);
             }

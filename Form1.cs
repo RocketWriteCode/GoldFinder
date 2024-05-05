@@ -13,7 +13,7 @@ namespace GoldFinder
 {
     public partial class Form1 : Form
     {
-        LocationManager locationManager;
+        readonly LocationManager locationManager;
 
         public Form1()
         {
@@ -22,7 +22,6 @@ namespace GoldFinder
 
             LocationList.View = View.List;
             LocationList.LabelEdit = false;
-            LocationList.MultiSelect = false;
 
             UpdateDisplay();
         }
@@ -31,12 +30,9 @@ namespace GoldFinder
         {
             LocationList.Clear();
 
-            foreach(Entity entity in locationManager.locations)
+            foreach(Location location in locationManager.locations)
             {
-                if (entity.GetType() == typeof(Location))
-                {
-                    LocationList.Items.Add(entity.name);
-                }
+                LocationList.Items.Add(location.name);
             }
         }
 
@@ -67,6 +63,11 @@ namespace GoldFinder
 
         private void LocationName_TextChanged(object sender, EventArgs e)
         {
+            if(LocationList.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
             if(locationManager.GetLocationByName(LocationList.SelectedItems[0].Text, out Location location))
             {
                 location.name = LocationName.Text;

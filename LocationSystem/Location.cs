@@ -31,7 +31,7 @@ namespace GoldFinder.EntitySystem
             subLocations.Remove(toRemove);
         }
 
-        SubLocation GetSublocationByName(string inName)
+        public SubLocation GetSublocationByName(string inName)
         {
             foreach(SubLocation location in subLocations)
             {
@@ -41,6 +41,16 @@ namespace GoldFinder.EntitySystem
                 }
             }
             return null;
+        }
+
+        public bool GetSublocationByName(string inName, out SubLocation outSublocation)
+        {
+            outSublocation = GetSublocationByName(inName);
+            if(outSublocation != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
