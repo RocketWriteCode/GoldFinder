@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntitySystem\EntityManager.cs" />
+    <Compile Include="EntitySystem\LocationManager.cs" />
     <Compile Include="EntitySystem\Entity.cs" />
     <Compile Include="EntitySystem\Location.cs" />
     <Compile Include="EntitySystem\SubLocation.cs" />

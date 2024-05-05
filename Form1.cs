@@ -13,15 +13,16 @@ namespace GoldFinder
 {
     public partial class Form1 : Form
     {
-        EntityManager entityManager;
+        LocationManager locationManager;
 
         public Form1()
         {
             InitializeComponent();
-            entityManager = new EntityManager();
+            locationManager = new LocationManager();
 
             LocationList.View = View.List;
             LocationList.LabelEdit = false;
+            LocationList.MultiSelect = false;
 
             UpdateDisplay();
         }
@@ -30,7 +31,7 @@ namespace GoldFinder
         {
             LocationList.Clear();
 
-            foreach(Entity entity in entityManager.entities)
+            foreach(Entity entity in locationManager.locations)
             {
                 if (entity.GetType() == typeof(Location))
                 {
@@ -41,13 +42,18 @@ namespace GoldFinder
 
         private void AddLocationButton_Click(object sender, EventArgs e)
         {
-            entityManager.AddLocation("new location");
+            locationManager.AddLocation("new location");
             UpdateDisplay();
         }
 
         private void RemoveLocationButton_Click(object sender, EventArgs e)
         {
-            entityManager.DeleteLocation(LocationList.SelectedItems[0].Text);
+            if(LocationList.SelectedItems.Count <= 0)
+            {
+                return;
+            }
+
+            locationManager.DeleteLocation(LocationList.SelectedItems[0].Text);
             UpdateDisplay();
         }
 
@@ -61,7 +67,7 @@ namespace GoldFinder
 
         private void LocationName_TextChanged(object sender, EventArgs e)
         {
-            if(entityManager.GetLocationByName(LocationList.SelectedItems[0].Text, out Entity location))
+            if(locationManager.GetLocationByName(LocationList.SelectedItems[0].Text, out Location location))
             {
                 location.name = LocationName.Text;
                 LocationList.SelectedItems[0].Text = LocationName.Text;
@@ -72,7 +78,7 @@ namespace GoldFinder
         {
             if(LocationList.SelectedItems.Count > 0)
             {
-                SubLocationsMenu subLocations = new SubLocationsMenu(entityManager.GetLocationByName(LocationList.SelectedItems[0].Text));
+                SubLocationsMenu subLocations = new SubLocationsMenu(locationManager.GetLocationByName(LocationList.SelectedItems[0].Text));
                 subLocations.Show();
             }
         }

@@ -41,7 +41,7 @@ namespace GoldFinder
             this.LocationList.HideSelection = false;
             this.LocationList.Location = new System.Drawing.Point(182, 12);
             this.LocationList.Name = "LocationList";
-            this.LocationList.Size = new System.Drawing.Size(232, 601);
+            this.LocationList.Size = new System.Drawing.Size(196, 601);
             this.LocationList.TabIndex = 0;
             this.LocationList.UseCompatibleStateImageBehavior = false;
             this.LocationList.SelectedIndexChanged += new System.EventHandler(this.LocationList_SelectedIndexChanged);
@@ -68,7 +68,7 @@ namespace GoldFinder
             // 
             // LocationName
             // 
-            this.LocationName.Location = new System.Drawing.Point(421, 12);
+            this.LocationName.Location = new System.Drawing.Point(384, 12);
             this.LocationName.Name = "LocationName";
             this.LocationName.Size = new System.Drawing.Size(217, 20);
             this.LocationName.TabIndex = 2;
@@ -76,7 +76,7 @@ namespace GoldFinder
             // 
             // EditSublocationsButton
             // 
-            this.EditSublocationsButton.Location = new System.Drawing.Point(421, 42);
+            this.EditSublocationsButton.Location = new System.Drawing.Point(384, 42);
             this.EditSublocationsButton.Name = "EditSublocationsButton";
             this.EditSublocationsButton.Size = new System.Drawing.Size(217, 23);
             this.EditSublocationsButton.TabIndex = 3;
@@ -88,7 +88,7 @@ namespace GoldFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 625);
+            this.ClientSize = new System.Drawing.Size(613, 625);
             this.Controls.Add(this.EditSublocationsButton);
             this.Controls.Add(this.LocationName);
             this.Controls.Add(this.RemoveLocationButton);
