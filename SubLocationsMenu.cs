@@ -25,6 +25,7 @@ namespace GoldFinder
             SubLocationList.View = View.List;
             SubLocationList.LabelEdit = false;
             currentLocation = inLocation;
+            UpdateDisplay();
         }
 
         private void AddSublocationButton_Click(object sender, EventArgs e)

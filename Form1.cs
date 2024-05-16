@@ -8,18 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GoldFinder.EntitySystem;
+using GoldFinder.Saving;
 
 namespace GoldFinder
 {
     public partial class Form1 : Form
     {
-        readonly LocationManager locationManager;
         ListViewItem currentSelection;
 
         public Form1()
         {
             InitializeComponent();
-            locationManager = new LocationManager();
 
             LocationList.View = View.List;
             LocationList.LabelEdit = false;
@@ -31,7 +30,7 @@ namespace GoldFinder
         {
             LocationList.Clear();
 
-            foreach(Location location in locationManager.locations)
+            foreach(Location location in LocationManager.locations)
             {
                 LocationList.Items.Add(location.name);
             }
@@ -39,7 +38,7 @@ namespace GoldFinder
 
         private void AddLocationButton_Click(object sender, EventArgs e)
         {
-            locationManager.AddLocation("new location");
+            LocationManager.AddLocation("new location");
             UpdateDisplay();
             currentSelection = LocationList.FindItemWithText("new location");
             LocationName.Text = currentSelection.Text;
@@ -52,7 +51,7 @@ namespace GoldFinder
                 return;
             }
 
-            locationManager.DeleteLocation(LocationList.SelectedItems[0].Text);
+            LocationManager.DeleteLocation(LocationList.SelectedItems[0].Text);
             UpdateDisplay();
         }
 
@@ -72,7 +71,7 @@ namespace GoldFinder
                 return;
             }
 
-            if(locationManager.GetLocationByName(currentSelection.Text, out Location location))
+            if(LocationManager.GetLocationByName(currentSelection.Text, out Location location))
             {
                 location.name = LocationName.Text;
                 currentSelection.Text = LocationName.Text;
@@ -83,9 +82,19 @@ namespace GoldFinder
         {
             if(currentSelection != null)
             {
-                SubLocationsMenu subLocations = new SubLocationsMenu(locationManager.GetLocationByName(currentSelection.Text));
+                SubLocationsMenu subLocations = new SubLocationsMenu(LocationManager.GetLocationByName(currentSelection.Text));
                 subLocations.Show();
             }
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveManager.SaveToFile();
         }
     }
 }

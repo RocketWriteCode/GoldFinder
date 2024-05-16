@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace GoldFinder.EntitySystem
 {
-    class LocationManager
+    public static class LocationManager
     {
-        public List<Location> locations;
+        public static List<Location> locations = new List<Location>();
 
-        public LocationManager()
-        {
-            locations = new List<Location>();
-        }
-
-        public void Tick()
+        public static void Tick()
         {
             foreach(Entity entity in locations)
             {
@@ -23,12 +18,12 @@ namespace GoldFinder.EntitySystem
             }
         }
 
-        public void AddLocation(string name)
+        public static void AddLocation(string name)
         {
             locations.Add(new Location(name));
         }
 
-        public void DeleteLocation(string name)
+        public static void DeleteLocation(string name)
         {
             if(GetLocationByName(name, out Location toRemove))
             {
@@ -36,7 +31,7 @@ namespace GoldFinder.EntitySystem
             }
         }
 
-        public bool GetLocationByName(string name, out Location outLocation)
+        public static bool GetLocationByName(string name, out Location outLocation)
         {
             foreach(Location location in locations)
             {
@@ -50,7 +45,7 @@ namespace GoldFinder.EntitySystem
             return false;
         }
 
-        public Location GetLocationByName(string name)
+        public static Location GetLocationByName(string name)
         {
             if(GetLocationByName(name, out Location location))
             {

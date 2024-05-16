@@ -34,21 +34,26 @@ namespace GoldFinder
             this.RemoveLocationButton = new System.Windows.Forms.Button();
             this.LocationName = new System.Windows.Forms.TextBox();
             this.EditSublocationsButton = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // LocationList
             // 
             this.LocationList.HideSelection = false;
-            this.LocationList.Location = new System.Drawing.Point(182, 12);
+            this.LocationList.Location = new System.Drawing.Point(181, 26);
             this.LocationList.Name = "LocationList";
-            this.LocationList.Size = new System.Drawing.Size(196, 601);
+            this.LocationList.Size = new System.Drawing.Size(196, 339);
             this.LocationList.TabIndex = 0;
             this.LocationList.UseCompatibleStateImageBehavior = false;
             this.LocationList.SelectedIndexChanged += new System.EventHandler(this.LocationList_SelectedIndexChanged);
             // 
             // AddLocationButton
             // 
-            this.AddLocationButton.Location = new System.Drawing.Point(13, 13);
+            this.AddLocationButton.Location = new System.Drawing.Point(12, 27);
             this.AddLocationButton.Name = "AddLocationButton";
             this.AddLocationButton.Size = new System.Drawing.Size(163, 23);
             this.AddLocationButton.TabIndex = 1;
@@ -58,7 +63,7 @@ namespace GoldFinder
             // 
             // RemoveLocationButton
             // 
-            this.RemoveLocationButton.Location = new System.Drawing.Point(13, 42);
+            this.RemoveLocationButton.Location = new System.Drawing.Point(12, 56);
             this.RemoveLocationButton.Name = "RemoveLocationButton";
             this.RemoveLocationButton.Size = new System.Drawing.Size(163, 23);
             this.RemoveLocationButton.TabIndex = 1;
@@ -68,7 +73,7 @@ namespace GoldFinder
             // 
             // LocationName
             // 
-            this.LocationName.Location = new System.Drawing.Point(384, 12);
+            this.LocationName.Location = new System.Drawing.Point(383, 26);
             this.LocationName.Name = "LocationName";
             this.LocationName.Size = new System.Drawing.Size(217, 20);
             this.LocationName.TabIndex = 2;
@@ -76,7 +81,7 @@ namespace GoldFinder
             // 
             // EditSublocationsButton
             // 
-            this.EditSublocationsButton.Location = new System.Drawing.Point(384, 42);
+            this.EditSublocationsButton.Location = new System.Drawing.Point(383, 56);
             this.EditSublocationsButton.Name = "EditSublocationsButton";
             this.EditSublocationsButton.Size = new System.Drawing.Size(217, 23);
             this.EditSublocationsButton.TabIndex = 3;
@@ -84,18 +89,55 @@ namespace GoldFinder
             this.EditSublocationsButton.UseVisualStyleBackColor = true;
             this.EditSublocationsButton.Click += new System.EventHandler(this.EditSublocationsButton_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(613, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadToolStripMenuItem,
+            this.saveToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(613, 625);
+            this.ClientSize = new System.Drawing.Size(613, 372);
             this.Controls.Add(this.EditSublocationsButton);
             this.Controls.Add(this.LocationName);
             this.Controls.Add(this.RemoveLocationButton);
             this.Controls.Add(this.AddLocationButton);
             this.Controls.Add(this.LocationList);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,6 +150,10 @@ namespace GoldFinder
         private System.Windows.Forms.Button RemoveLocationButton;
         private System.Windows.Forms.TextBox LocationName;
         private System.Windows.Forms.Button EditSublocationsButton;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     }
 }
 
