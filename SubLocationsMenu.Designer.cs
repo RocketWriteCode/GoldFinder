@@ -34,6 +34,8 @@ namespace GoldFinder
             this.AddSublocationButton = new System.Windows.Forms.Button();
             this.RemoveSublocationButton = new System.Windows.Forms.Button();
             this.SublocationNameField = new System.Windows.Forms.TextBox();
+            this.RecipeListView = new System.Windows.Forms.ListView();
+            this.AddRecipeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LocationName
@@ -83,14 +85,36 @@ namespace GoldFinder
             this.SublocationNameField.TabIndex = 3;
             this.SublocationNameField.TextChanged += new System.EventHandler(this.SublocationNameField_TextChanged);
             // 
+            // RecipeListView
+            // 
+            this.RecipeListView.HideSelection = false;
+            this.RecipeListView.Location = new System.Drawing.Point(498, 29);
+            this.RecipeListView.Name = "RecipeListView";
+            this.RecipeListView.Size = new System.Drawing.Size(162, 409);
+            this.RecipeListView.TabIndex = 1;
+            this.RecipeListView.UseCompatibleStateImageBehavior = false;
+            this.RecipeListView.SelectedIndexChanged += new System.EventHandler(this.SubLocationList_SelectedIndexChanged);
+            // 
+            // AddRecipeButton
+            // 
+            this.AddRecipeButton.Location = new System.Drawing.Point(318, 58);
+            this.AddRecipeButton.Name = "AddRecipeButton";
+            this.AddRecipeButton.Size = new System.Drawing.Size(174, 23);
+            this.AddRecipeButton.TabIndex = 4;
+            this.AddRecipeButton.Text = "Add Recipe";
+            this.AddRecipeButton.UseVisualStyleBackColor = true;
+            this.AddRecipeButton.Click += new System.EventHandler(this.AddRecipeButton_Click);
+            // 
             // SubLocationsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.AddRecipeButton);
             this.Controls.Add(this.SublocationNameField);
             this.Controls.Add(this.RemoveSublocationButton);
             this.Controls.Add(this.AddSublocationButton);
+            this.Controls.Add(this.RecipeListView);
             this.Controls.Add(this.SubLocationList);
             this.Controls.Add(this.LocationName);
             this.Name = "SubLocationsMenu";
@@ -107,5 +131,7 @@ namespace GoldFinder
         private System.Windows.Forms.Button AddSublocationButton;
         private System.Windows.Forms.Button RemoveSublocationButton;
         private System.Windows.Forms.TextBox SublocationNameField;
+        private System.Windows.Forms.ListView RecipeListView;
+        private System.Windows.Forms.Button AddRecipeButton;
     }
 }

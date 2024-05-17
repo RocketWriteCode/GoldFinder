@@ -6,9 +6,22 @@ using System.Threading.Tasks;
 
 namespace GoldFinder.Resources
 {
-    class Resource
+    public class Resource
     {
-        public readonly string name;
+        public string name;
         public double priceInGold;
+        public int amount;
+
+        public Resource(string inName, double inPriceInGold, int inAmount)
+        {
+            name = inName;
+            priceInGold = inPriceInGold;
+            amount = inAmount;
+        }
+
+        public Resource(string inName)
+        {
+            name = inName;
+        }
     }
 }

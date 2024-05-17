@@ -6,10 +6,24 @@ using System.Threading.Tasks;
 
 namespace GoldFinder.Resources
 {
-    class Recipe
+    public class Recipe
     {
+        public string name;
         public List<Resource> ingredients = new List<Resource>();
         public List<Resource> output = new List<Resource>();
-        public WorkInfo workInfo;
+        public WorkInfo workInfo = new WorkInfo();
+
+        public Recipe(string inName, List<Resource> inIngredients, List<Resource> inOutput, WorkInfo inWorkInfo)
+        {
+            name = inName;
+            ingredients = inIngredients;
+            output = inOutput;
+            workInfo = inWorkInfo;
+        }
+
+        public Recipe(string inName)
+        {
+            name = inName;
+        }
     }
 }

@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GoldFinder.EntitySystem;
+using GoldFinder.Resources;
 
 namespace GoldFinder
 {
     public partial class SubLocationsMenu : Form
     {
         readonly Location currentLocation;
+        Sublocation currentlySelectedSublocation;
         ListViewItem currentSelection;
 
         public SubLocationsMenu(Location inLocation)
@@ -24,6 +26,8 @@ namespace GoldFinder
 
             SubLocationList.View = View.List;
             SubLocationList.LabelEdit = false;
+            RecipeListView.View = View.List;
+            RecipeListView.LabelEdit = false;
             currentLocation = inLocation;
             UpdateDisplay();
         }
@@ -32,7 +36,7 @@ namespace GoldFinder
         {
             currentLocation.AddSublocation("New Sublocation");
             UpdateDisplay();
-            currentSelection = SubLocationList.FindItemWithText("New Sublocation");
+            SetSelection(SubLocationList.FindItemWithText("New Sublocation"));
             SublocationNameField.Text = currentSelection.Text;
         }
 
@@ -50,10 +54,23 @@ namespace GoldFinder
         void UpdateDisplay()
         {
             SubLocationList.Clear();
+            RecipeListView.Clear();
 
             foreach (Sublocation subLocation in currentLocation.subLocations)
             {
                 SubLocationList.Items.Add(subLocation.name);
+            }
+
+
+            SetSelection(SubLocationList.Items[0]);
+
+
+            if(currentlySelectedSublocation != null)
+            {
+                foreach(Recipe recipe in currentlySelectedSublocation.recipes)
+                {
+                    RecipeListView.Items.Add(recipe.name);
+                }
             }
         }
 
@@ -78,8 +95,28 @@ namespace GoldFinder
             if(SubLocationList.SelectedItems.Count > 0)
             {
                 SublocationNameField.Text = SubLocationList.SelectedItems[0].Text;
-                currentSelection = SubLocationList.SelectedItems[0];
+                SetSelection(SubLocationList.SelectedItems);
             }
+            UpdateDisplay();
+        }
+
+        private void SetSelection(ListView.SelectedListViewItemCollection items)
+        {
+            if (items.Count <= 0) return;
+            currentSelection = items[0];
+            currentlySelectedSublocation = currentLocation.GetSublocationByName(currentSelection.Text);
+        }
+
+        private void SetSelection(ListViewItem item)
+        {
+            currentSelection = item;
+            currentlySelectedSublocation = currentLocation.GetSublocationByName(currentSelection.Text);
+        }
+
+        private void AddRecipeButton_Click(object sender, EventArgs e)
+        {
+            currentlySelectedSublocation.AddRecipe(new Recipe("new recipe"));
+            UpdateDisplay();
         }
     }
 }
