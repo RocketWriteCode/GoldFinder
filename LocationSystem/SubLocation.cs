@@ -33,6 +33,23 @@ namespace GoldFinder.EntitySystem
             recipes.Add(recipe);
         }
 
+        public void DeleteRecipe(string recipeName)
+        {
+            List<Recipe> toDelete = new List<Recipe>();
+            foreach(Recipe recipe in recipes)
+            {
+                if(recipe.name == recipeName)
+                {
+                    toDelete.Add(recipe);
+                }
+            }
+
+            foreach(Recipe recipe in toDelete)
+            {
+                recipes.Remove(recipe);
+            }
+        }
+
         public void AddOrRemoveResource(Resource resource, int count)
         {
             if (!localResources.Contains(resource)) return;

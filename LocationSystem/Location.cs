@@ -57,5 +57,6 @@ namespace GoldFinder.EntitySystem
             }
             return false;
         }
+
     }
 }

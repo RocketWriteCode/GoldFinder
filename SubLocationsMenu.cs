@@ -16,7 +16,8 @@ namespace GoldFinder
     {
         readonly Location currentLocation;
         Sublocation currentlySelectedSublocation;
-        ListViewItem currentSelection;
+        ListViewItem currentSublocationSelection;
+        ListViewItem currentRecipeSelection;
 
         public SubLocationsMenu(Location inLocation)
         {
@@ -37,7 +38,7 @@ namespace GoldFinder
             currentLocation.AddSublocation("New Sublocation");
             UpdateDisplay();
             SetSelection(SubLocationList.FindItemWithText("New Sublocation"));
-            SublocationNameField.Text = currentSelection.Text;
+            SublocationNameField.Text = currentSublocationSelection.Text;
         }
 
         private void RemoveSublocationButton_Click(object sender, EventArgs e)
@@ -61,8 +62,10 @@ namespace GoldFinder
                 SubLocationList.Items.Add(subLocation.name);
             }
 
-
-            SetSelection(SubLocationList.Items[0]);
+            if(SubLocationList.Items.Count > 0)
+            {
+                SetSelection(SubLocationList.Items[0]);
+            }
 
 
             if(currentlySelectedSublocation != null)
@@ -76,15 +79,15 @@ namespace GoldFinder
 
         private void SublocationNameField_TextChanged(object sender, EventArgs e)
         {
-            if (currentSelection == null)
+            if (currentSublocationSelection == null)
             {
                 return;
             }
 
-            if (currentLocation.GetSublocationByName(currentSelection.Text, out Sublocation subLocation))
+            if (currentLocation.GetSublocationByName(currentSublocationSelection.Text, out Sublocation subLocation))
             {
                 subLocation.name = SublocationNameField.Text;
-                currentSelection.Text = SublocationNameField.Text;
+                currentSublocationSelection.Text = SublocationNameField.Text;
             }
 
             UpdateDisplay();
@@ -97,25 +100,64 @@ namespace GoldFinder
                 SublocationNameField.Text = SubLocationList.SelectedItems[0].Text;
                 SetSelection(SubLocationList.SelectedItems);
             }
-            UpdateDisplay();
         }
 
         private void SetSelection(ListView.SelectedListViewItemCollection items)
         {
             if (items.Count <= 0) return;
-            currentSelection = items[0];
-            currentlySelectedSublocation = currentLocation.GetSublocationByName(currentSelection.Text);
+            currentSublocationSelection = items[0];
+            currentlySelectedSublocation = currentLocation.GetSublocationByName(currentSublocationSelection.Text);
+        }
+
+        private void SetRecipeSelection(ListView.SelectedListViewItemCollection items)
+        {
+            if (items.Count <= 0) return;
+            currentRecipeSelection = items[0];
         }
 
         private void SetSelection(ListViewItem item)
         {
-            currentSelection = item;
-            currentlySelectedSublocation = currentLocation.GetSublocationByName(currentSelection.Text);
+            if (item == null) return;
+            currentSublocationSelection = item;
+            currentlySelectedSublocation = currentLocation.GetSublocationByName(currentSublocationSelection.Text);
         }
 
         private void AddRecipeButton_Click(object sender, EventArgs e)
         {
             currentlySelectedSublocation.AddRecipe(new Recipe("new recipe"));
+            UpdateDisplay();
+        }
+
+        private void DeleteRecipeButton_Click(object sender, EventArgs e)
+        {
+            if (RecipeListView.SelectedItems.Count <= 0) return;
+            string recipeName = RecipeListView.SelectedItems[0].Text;
+            currentlySelectedSublocation.DeleteRecipe(recipeName);
+            UpdateDisplay();
+        }
+
+        private void RecipeListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RecipeListView.SelectedItems.Count > 0)
+            {
+                RecipeNameBox.Text = RecipeListView.SelectedItems[0].Text;
+                SetRecipeSelection(RecipeListView.SelectedItems);
+            }
+        }
+
+        private void RecipeNameBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentRecipeSelection == null) return;
+
+            foreach(Recipe recipe in currentlySelectedSublocation.recipes)
+            {
+                if(recipe.name == currentRecipeSelection.Text)
+                {
+                    recipe.name = RecipeNameBox.Text;
+                }
+            }
+            currentRecipeSelection.Text = RecipeNameBox.Text;
+
             UpdateDisplay();
         }
     }

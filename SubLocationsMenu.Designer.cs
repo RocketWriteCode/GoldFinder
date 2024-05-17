@@ -34,8 +34,10 @@ namespace GoldFinder
             this.AddSublocationButton = new System.Windows.Forms.Button();
             this.RemoveSublocationButton = new System.Windows.Forms.Button();
             this.SublocationNameField = new System.Windows.Forms.TextBox();
-            this.RecipeListView = new System.Windows.Forms.ListView();
             this.AddRecipeButton = new System.Windows.Forms.Button();
+            this.DeleteRecipeButton = new System.Windows.Forms.Button();
+            this.RecipeNameBox = new System.Windows.Forms.TextBox();
+            this.RecipeListView = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // LocationName
@@ -85,16 +87,6 @@ namespace GoldFinder
             this.SublocationNameField.TabIndex = 3;
             this.SublocationNameField.TextChanged += new System.EventHandler(this.SublocationNameField_TextChanged);
             // 
-            // RecipeListView
-            // 
-            this.RecipeListView.HideSelection = false;
-            this.RecipeListView.Location = new System.Drawing.Point(498, 29);
-            this.RecipeListView.Name = "RecipeListView";
-            this.RecipeListView.Size = new System.Drawing.Size(162, 409);
-            this.RecipeListView.TabIndex = 1;
-            this.RecipeListView.UseCompatibleStateImageBehavior = false;
-            this.RecipeListView.SelectedIndexChanged += new System.EventHandler(this.SubLocationList_SelectedIndexChanged);
-            // 
             // AddRecipeButton
             // 
             this.AddRecipeButton.Location = new System.Drawing.Point(318, 58);
@@ -105,16 +97,46 @@ namespace GoldFinder
             this.AddRecipeButton.UseVisualStyleBackColor = true;
             this.AddRecipeButton.Click += new System.EventHandler(this.AddRecipeButton_Click);
             // 
+            // DeleteRecipeButton
+            // 
+            this.DeleteRecipeButton.Location = new System.Drawing.Point(318, 88);
+            this.DeleteRecipeButton.Name = "DeleteRecipeButton";
+            this.DeleteRecipeButton.Size = new System.Drawing.Size(174, 23);
+            this.DeleteRecipeButton.TabIndex = 5;
+            this.DeleteRecipeButton.Text = "Delete Recipe";
+            this.DeleteRecipeButton.UseVisualStyleBackColor = true;
+            this.DeleteRecipeButton.Click += new System.EventHandler(this.DeleteRecipeButton_Click);
+            // 
+            // RecipeNameBox
+            // 
+            this.RecipeNameBox.Location = new System.Drawing.Point(667, 29);
+            this.RecipeNameBox.Name = "RecipeNameBox";
+            this.RecipeNameBox.Size = new System.Drawing.Size(144, 20);
+            this.RecipeNameBox.TabIndex = 6;
+            this.RecipeNameBox.TextChanged += new System.EventHandler(this.RecipeNameBox_TextChanged);
+            // 
+            // RecipeListView
+            // 
+            this.RecipeListView.HideSelection = false;
+            this.RecipeListView.Location = new System.Drawing.Point(499, 29);
+            this.RecipeListView.Name = "RecipeListView";
+            this.RecipeListView.Size = new System.Drawing.Size(162, 409);
+            this.RecipeListView.TabIndex = 7;
+            this.RecipeListView.UseCompatibleStateImageBehavior = false;
+            this.RecipeListView.SelectedIndexChanged += new System.EventHandler(this.RecipeListView_SelectedIndexChanged);
+            // 
             // SubLocationsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(905, 450);
+            this.Controls.Add(this.RecipeListView);
+            this.Controls.Add(this.RecipeNameBox);
+            this.Controls.Add(this.DeleteRecipeButton);
             this.Controls.Add(this.AddRecipeButton);
             this.Controls.Add(this.SublocationNameField);
             this.Controls.Add(this.RemoveSublocationButton);
             this.Controls.Add(this.AddSublocationButton);
-            this.Controls.Add(this.RecipeListView);
             this.Controls.Add(this.SubLocationList);
             this.Controls.Add(this.LocationName);
             this.Name = "SubLocationsMenu";
@@ -131,7 +153,9 @@ namespace GoldFinder
         private System.Windows.Forms.Button AddSublocationButton;
         private System.Windows.Forms.Button RemoveSublocationButton;
         private System.Windows.Forms.TextBox SublocationNameField;
-        private System.Windows.Forms.ListView RecipeListView;
         private System.Windows.Forms.Button AddRecipeButton;
+        private System.Windows.Forms.Button DeleteRecipeButton;
+        private System.Windows.Forms.TextBox RecipeNameBox;
+        private System.Windows.Forms.ListView RecipeListView;
     }
 }
