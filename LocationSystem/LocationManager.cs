@@ -23,6 +23,11 @@ namespace GoldFinder.EntitySystem
             locations.Add(new Location(name));
         }
 
+        public static void AddLocation(Location location)
+        {
+            locations.Add(location);
+        }
+
         public static void DeleteLocation(string name)
         {
             if(GetLocationByName(name, out Location toRemove))
@@ -52,6 +57,11 @@ namespace GoldFinder.EntitySystem
                 return location;
             }
             return null;
+        }
+
+        public static void Clear()
+        {
+            locations.Clear();
         }
     }
 }

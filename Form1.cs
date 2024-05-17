@@ -89,7 +89,8 @@ namespace GoldFinder
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            LoadManager.LoadFromFile();
+            UpdateDisplay();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)

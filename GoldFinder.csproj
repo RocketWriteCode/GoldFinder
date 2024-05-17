@@ -77,7 +77,7 @@
     <Compile Include="LocationSystem\LocationManager.cs" />
     <Compile Include="LocationSystem\Entity.cs" />
     <Compile Include="LocationSystem\Location.cs" />
-    <Compile Include="LocationSystem\SubLocation.cs" />
+    <Compile Include="LocationSystem\Sublocation.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +89,7 @@
     <Compile Include="Resources\Recipe.cs" />
     <Compile Include="Resources\Resource.cs" />
     <Compile Include="Resources\WorkInfo.cs" />
+    <Compile Include="Saving\LoadManager.cs" />
     <Compile Include="Saving\SaveManager.cs" />
     <Compile Include="SubLocationsMenu.cs">
       <SubType>Form</SubType>

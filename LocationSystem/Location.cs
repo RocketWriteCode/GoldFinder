@@ -8,11 +8,11 @@ namespace GoldFinder.EntitySystem
 {
     public class Location : Entity
     {
-        public readonly List<SubLocation> subLocations;
+        public readonly List<Sublocation> subLocations;
 
         public Location(string inName) : base(inName)
         {
-            subLocations = new List<SubLocation>();
+            subLocations = new List<Sublocation>();
         }
 
         public override void Tick()
@@ -22,18 +22,23 @@ namespace GoldFinder.EntitySystem
 
         public void AddSublocation(string inName)
         {
-            subLocations.Add(new SubLocation(inName));
+            subLocations.Add(new Sublocation(inName));
+        }
+
+        public void AddSublocation(Sublocation sublocation)
+        {
+            subLocations.Add(sublocation);
         }
 
         public void RemoveSublocation(string inName)
         {
-            SubLocation toRemove = GetSublocationByName(inName);
+            Sublocation toRemove = GetSublocationByName(inName);
             subLocations.Remove(toRemove);
         }
 
-        public SubLocation GetSublocationByName(string inName)
+        public Sublocation GetSublocationByName(string inName)
         {
-            foreach(SubLocation location in subLocations)
+            foreach(Sublocation location in subLocations)
             {
                 if(location.name == inName)
                 {
@@ -43,7 +48,7 @@ namespace GoldFinder.EntitySystem
             return null;
         }
 
-        public bool GetSublocationByName(string inName, out SubLocation outSublocation)
+        public bool GetSublocationByName(string inName, out Sublocation outSublocation)
         {
             outSublocation = GetSublocationByName(inName);
             if(outSublocation != null)

@@ -51,7 +51,7 @@ namespace GoldFinder
         {
             SubLocationList.Clear();
 
-            foreach (SubLocation subLocation in currentLocation.subLocations)
+            foreach (Sublocation subLocation in currentLocation.subLocations)
             {
                 SubLocationList.Items.Add(subLocation.name);
             }
@@ -64,7 +64,7 @@ namespace GoldFinder
                 return;
             }
 
-            if (currentLocation.GetSublocationByName(currentSelection.Text, out SubLocation subLocation))
+            if (currentLocation.GetSublocationByName(currentSelection.Text, out Sublocation subLocation))
             {
                 subLocation.name = SublocationNameField.Text;
                 currentSelection.Text = SublocationNameField.Text;

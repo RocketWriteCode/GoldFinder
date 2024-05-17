@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using GoldFinder.EntitySystem;
-using System.Text.Json;
 using System.IO;
 
 namespace GoldFinder.Saving
@@ -33,14 +32,14 @@ namespace GoldFinder.Saving
         {
             string result = "";
 
-            result += "<GoldfinderData>";
+            result += "<GoldfinderData>\n";
 
             foreach(Location location in LocationManager.locations)
             {
                 result += SerializeLocation(location);
             }
 
-            result += ">/GoldfinderData>";
+            result += "</GoldfinderData>";
 
             return result;
         }
@@ -49,26 +48,26 @@ namespace GoldFinder.Saving
         {
             string result = "";
 
-            result += "<Location>";
-            result += $"<Name>{location.name}</Name>";
+            result += "<Location>\n";
+            result += $"<Name>\n{location.name}\n";
 
-            foreach(SubLocation sublocation in location.subLocations)
+            foreach(Sublocation sublocation in location.subLocations)
             {
                 result += SerializeSublocation(sublocation);
             }
 
-            result += "</Location>";
+            result += "</Location>\n";
 
             return result;
         }
 
-        static string SerializeSublocation(SubLocation sublocation)
+        static string SerializeSublocation(Sublocation sublocation)
         {
             string result = "";
 
-            result += "<Sublocation>";
-            result += $"<Name>{sublocation.name}</Name>";
-            result += "</Sublocation>";
+            result += "<Sublocation>\n";
+            result += $"<Name>\n{sublocation.name}\n";
+            result += "</Sublocation>\n";
 
             return result;
         }

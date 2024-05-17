@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GoldFinder.EntitySystem
 {
-    public class SubLocation : Entity
+    public class Sublocation : Entity
     {
-        public SubLocation(string inName) : base(inName)
+        public Sublocation(string inName) : base(inName)
         {
 
         }
