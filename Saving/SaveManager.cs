@@ -72,24 +72,33 @@ namespace GoldFinder.Saving
 
             foreach(Recipe recipe in sublocation.recipes)
             {
-                result += "<Recipe>\n";
-
-                result += $"<Name>\n{recipe.name}\n";
-
-                foreach(Resource ingredient in recipe.ingredients)
-                {
-                    result += $"<Ingredient>\n{ingredient.name}\n{ingredient.amount}\n";
-                }
-                foreach(Resource output in recipe.output)
-                {
-                    result += $"<Output>\n{output.name}\n{output.amount}\n";
-                }
-                result += $"<WorkInfo>\n{recipe.workInfo.lowQualityWork}\n{recipe.workInfo.mediumQualityWork}\n{recipe.workInfo.highQualityWork}\n";
-
-                result += "</Recipe>\n";
+                result += SerializeRecipe(recipe);
             }
 
             result += "</Sublocation>\n";
+
+            return result;
+        }
+
+        static string SerializeRecipe(Recipe recipe)
+        {
+            string result = "";
+
+            result += "<Recipe>\n";
+
+            result += $"<Name>\n{recipe.name}\n";
+
+            foreach (Resource ingredient in recipe.ingredients)
+            {
+                result += $"<Ingredient>\n{ingredient.name}\n{ingredient.amount}\n";
+            }
+            foreach (Resource output in recipe.output)
+            {
+                result += $"<Output>\n{output.name}\n{output.amount}\n";
+            }
+            result += $"<WorkInfo>\n{recipe.workInfo.lowQualityWork}\n{recipe.workInfo.mediumQualityWork}\n{recipe.workInfo.highQualityWork}\n";
+
+            result += "</Recipe>\n";
 
             return result;
         }
