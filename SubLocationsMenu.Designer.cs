@@ -47,6 +47,9 @@ namespace GoldFinder
             this.AddOutputButton = new System.Windows.Forms.Button();
             this.DeleteOutputButton = new System.Windows.Forms.Button();
             this.IngredientNameBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.IngredientAmountBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // LocationName
@@ -219,11 +222,40 @@ namespace GoldFinder
             this.IngredientNameBox.TabIndex = 12;
             this.IngredientNameBox.TextChanged += new System.EventHandler(this.IngredientNameBox_TextChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(798, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Name";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(798, 123);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Amount";
+            // 
+            // IngredientAmountBox
+            // 
+            this.IngredientAmountBox.Location = new System.Drawing.Point(798, 140);
+            this.IngredientAmountBox.Name = "IngredientAmountBox";
+            this.IngredientAmountBox.Size = new System.Drawing.Size(121, 20);
+            this.IngredientAmountBox.TabIndex = 14;
+            this.IngredientAmountBox.TextChanged += new System.EventHandler(this.IngredientAmountBox_TextChanged);
+            // 
             // SubLocationsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 449);
+            this.Controls.Add(this.IngredientAmountBox);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.IngredientNameBox);
             this.Controls.Add(this.DeleteOutputButton);
             this.Controls.Add(this.AddOutputButton);
@@ -269,5 +301,8 @@ namespace GoldFinder
         private System.Windows.Forms.Button AddOutputButton;
         private System.Windows.Forms.Button DeleteOutputButton;
         private System.Windows.Forms.TextBox IngredientNameBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox IngredientAmountBox;
     }
 }

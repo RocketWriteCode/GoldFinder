@@ -234,7 +234,15 @@ namespace GoldFinder
             currentIngredientSelection = IngredientListView.SelectedItems[0];
             currentIngredient = currentRecipe.GetIngredientByName(currentIngredientSelection.Text);
             IngredientNameBox.Text = currentIngredient.name;
+            IngredientAmountBox.Text = currentIngredient.amount.ToString();
             UpdateDisplay();
+        }
+
+        private void IngredientAmountBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentIngredient == null) return;
+
+            currentIngredient.amount = int.Parse(IngredientAmountBox.Text);
         }
     }
 }
