@@ -46,7 +46,26 @@ namespace GoldFinder
 
         private void AddSublocationButton_Click(object sender, EventArgs e)
         {
-            currentLocation.AddSublocation("New Sublocation");
+            bool done = false;
+            string nameRoot = "New Sublocation";
+            int ModifierNumber = 0;
+            string newName = "";
+
+            while (!done)
+            {
+                done = true;
+                newName = $"{nameRoot} {ModifierNumber}";
+                foreach (ListViewItem sublocation in SubLocationList.Items)
+                {
+                    if (newName == sublocation.Text)
+                    {
+                        done = false;
+                    }
+                }
+                ModifierNumber++;
+            }
+
+            currentLocation.AddSublocation(newName);
             UpdateDisplay();
             SetSelection(SubLocationList.FindItemWithText("New Sublocation"));
             SublocationNameField.Text = currentSublocationSelection.Text;
