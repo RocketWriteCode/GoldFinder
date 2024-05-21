@@ -38,7 +38,26 @@ namespace GoldFinder
 
         private void AddLocationButton_Click(object sender, EventArgs e)
         {
-            LocationManager.AddLocation("new location");
+            bool done = false;
+            string nameRoot = "New Location";
+            int ModifierNumber = 0;
+            string newName = "";
+
+            while (!done)
+            {
+                done = true;
+                newName = $"{nameRoot} {ModifierNumber}";
+                foreach (ListViewItem location in LocationList.Items)
+                {
+                    if (newName == location.Text)
+                    {
+                        done = false;
+                    }
+                }
+                ModifierNumber++;
+            }
+
+            LocationManager.AddLocation(newName);
             UpdateDisplay();
             currentSelection = LocationList.FindItemWithText("new location");
             LocationName.Text = currentSelection.Text;
