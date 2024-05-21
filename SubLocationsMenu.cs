@@ -167,8 +167,8 @@ namespace GoldFinder
         {
             if (RecipeListView.SelectedItems.Count > 0)
             {
-                RecipeNameBox.Text = RecipeListView.SelectedItems[0].Text;
                 SetRecipeSelection(RecipeListView.SelectedItems);
+                RecipeNameBox.Text = RecipeListView.SelectedItems[0].Text;
                 UpdateDisplay();
             }
         }
