@@ -63,5 +63,18 @@ namespace GoldFinder.EntitySystem
                 listedResource.amount = 0;
             }
         }
+
+        public Recipe GetRecipeByName(string name)
+        {
+            foreach(Recipe recipe in recipes)
+            {
+                if(recipe.name == name)
+                {
+                    return recipe;
+                }
+            }
+
+            return null;
+        }
     }
 }

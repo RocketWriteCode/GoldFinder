@@ -38,6 +38,14 @@ namespace GoldFinder
             this.DeleteRecipeButton = new System.Windows.Forms.Button();
             this.RecipeNameBox = new System.Windows.Forms.TextBox();
             this.RecipeListView = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.IngredientListView = new System.Windows.Forms.ListView();
+            this.OutputListView = new System.Windows.Forms.ListView();
+            this.AddInputButton = new System.Windows.Forms.Button();
+            this.DeleteInputButton = new System.Windows.Forms.Button();
+            this.AddOutputButton = new System.Windows.Forms.Button();
+            this.DeleteOutputButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // LocationName
@@ -109,9 +117,9 @@ namespace GoldFinder
             // 
             // RecipeNameBox
             // 
-            this.RecipeNameBox.Location = new System.Drawing.Point(667, 29);
+            this.RecipeNameBox.Location = new System.Drawing.Point(671, 29);
             this.RecipeNameBox.Name = "RecipeNameBox";
-            this.RecipeNameBox.Size = new System.Drawing.Size(144, 20);
+            this.RecipeNameBox.Size = new System.Drawing.Size(249, 20);
             this.RecipeNameBox.TabIndex = 6;
             this.RecipeNameBox.TextChanged += new System.EventHandler(this.RecipeNameBox_TextChanged);
             // 
@@ -125,11 +133,93 @@ namespace GoldFinder
             this.RecipeListView.UseCompatibleStateImageBehavior = false;
             this.RecipeListView.SelectedIndexChanged += new System.EventHandler(this.RecipeListView_SelectedIndexChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(668, 114);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Input";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(796, 114);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(39, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Output";
+            // 
+            // IngredientListView
+            // 
+            this.IngredientListView.HideSelection = false;
+            this.IngredientListView.Location = new System.Drawing.Point(671, 130);
+            this.IngredientListView.Name = "IngredientListView";
+            this.IngredientListView.Size = new System.Drawing.Size(121, 308);
+            this.IngredientListView.TabIndex = 9;
+            this.IngredientListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // OutputListView
+            // 
+            this.OutputListView.HideSelection = false;
+            this.OutputListView.Location = new System.Drawing.Point(799, 130);
+            this.OutputListView.Name = "OutputListView";
+            this.OutputListView.Size = new System.Drawing.Size(121, 308);
+            this.OutputListView.TabIndex = 10;
+            this.OutputListView.UseCompatibleStateImageBehavior = false;
+            // 
+            // AddInputButton
+            // 
+            this.AddInputButton.Location = new System.Drawing.Point(671, 58);
+            this.AddInputButton.Name = "AddInputButton";
+            this.AddInputButton.Size = new System.Drawing.Size(121, 23);
+            this.AddInputButton.TabIndex = 11;
+            this.AddInputButton.Text = "Add Input";
+            this.AddInputButton.UseVisualStyleBackColor = true;
+            this.AddInputButton.Click += new System.EventHandler(this.AddInputButton_Click);
+            // 
+            // DeleteInputButton
+            // 
+            this.DeleteInputButton.Location = new System.Drawing.Point(671, 87);
+            this.DeleteInputButton.Name = "DeleteInputButton";
+            this.DeleteInputButton.Size = new System.Drawing.Size(121, 23);
+            this.DeleteInputButton.TabIndex = 11;
+            this.DeleteInputButton.Text = "Delete Input";
+            this.DeleteInputButton.UseVisualStyleBackColor = true;
+            this.DeleteInputButton.Click += new System.EventHandler(this.DeleteInputButton_Click);
+            // 
+            // AddOutputButton
+            // 
+            this.AddOutputButton.Location = new System.Drawing.Point(799, 59);
+            this.AddOutputButton.Name = "AddOutputButton";
+            this.AddOutputButton.Size = new System.Drawing.Size(121, 23);
+            this.AddOutputButton.TabIndex = 11;
+            this.AddOutputButton.Text = "Add Output";
+            this.AddOutputButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteOutputButton
+            // 
+            this.DeleteOutputButton.Location = new System.Drawing.Point(799, 88);
+            this.DeleteOutputButton.Name = "DeleteOutputButton";
+            this.DeleteOutputButton.Size = new System.Drawing.Size(121, 23);
+            this.DeleteOutputButton.TabIndex = 11;
+            this.DeleteOutputButton.Text = "Delete Output";
+            this.DeleteOutputButton.UseVisualStyleBackColor = true;
+            // 
             // SubLocationsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 450);
+            this.ClientSize = new System.Drawing.Size(975, 450);
+            this.Controls.Add(this.DeleteOutputButton);
+            this.Controls.Add(this.AddOutputButton);
+            this.Controls.Add(this.DeleteInputButton);
+            this.Controls.Add(this.AddInputButton);
+            this.Controls.Add(this.OutputListView);
+            this.Controls.Add(this.IngredientListView);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.RecipeListView);
             this.Controls.Add(this.RecipeNameBox);
             this.Controls.Add(this.DeleteRecipeButton);
@@ -157,5 +247,13 @@ namespace GoldFinder
         private System.Windows.Forms.Button DeleteRecipeButton;
         private System.Windows.Forms.TextBox RecipeNameBox;
         private System.Windows.Forms.ListView RecipeListView;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListView IngredientListView;
+        private System.Windows.Forms.ListView OutputListView;
+        private System.Windows.Forms.Button AddInputButton;
+        private System.Windows.Forms.Button DeleteInputButton;
+        private System.Windows.Forms.Button AddOutputButton;
+        private System.Windows.Forms.Button DeleteOutputButton;
     }
 }

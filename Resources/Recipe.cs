@@ -25,5 +25,22 @@ namespace GoldFinder.Resources
         {
             name = inName;
         }
+
+        public void DeleteIngredientByName(string name)
+        {
+            List<Resource> toDelete = new List<Resource>();
+            foreach(Resource ingredient in ingredients)
+            {
+                if(ingredient.name == name)
+                {
+                    toDelete.Add(ingredient);
+                }
+            }
+
+            foreach(Resource delete in toDelete)
+            {
+                ingredients.Remove(delete);
+            }
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace GoldFinder
         Sublocation currentlySelectedSublocation;
         ListViewItem currentSublocationSelection;
         ListViewItem currentRecipeSelection;
+        Recipe currentRecipe;
 
         public SubLocationsMenu(Location inLocation)
         {
@@ -29,6 +30,8 @@ namespace GoldFinder
             SubLocationList.LabelEdit = false;
             RecipeListView.View = View.List;
             RecipeListView.LabelEdit = false;
+            IngredientListView.View = View.List;
+            IngredientListView.LabelEdit = false;
             currentLocation = inLocation;
             UpdateDisplay();
         }
@@ -56,6 +59,7 @@ namespace GoldFinder
         {
             SubLocationList.Clear();
             RecipeListView.Clear();
+            IngredientListView.Clear();
 
             foreach (Sublocation subLocation in currentLocation.subLocations)
             {
@@ -67,12 +71,19 @@ namespace GoldFinder
                 SetSelection(SubLocationList.Items[0]);
             }
 
-
             if(currentlySelectedSublocation != null)
             {
                 foreach(Recipe recipe in currentlySelectedSublocation.recipes)
                 {
                     RecipeListView.Items.Add(recipe.name);
+                }
+            }
+
+            if(currentRecipeSelection != null)
+            {                
+                foreach(Resource ingredient in currentRecipe.ingredients)
+                {
+                    IngredientListView.Items.Add(ingredient.name);
                 }
             }
         }
@@ -113,6 +124,7 @@ namespace GoldFinder
         {
             if (items.Count <= 0) return;
             currentRecipeSelection = items[0];
+            currentRecipe = currentlySelectedSublocation.GetRecipeByName(currentRecipeSelection.Text);
         }
 
         private void SetSelection(ListViewItem item)
@@ -158,6 +170,22 @@ namespace GoldFinder
             }
             currentRecipeSelection.Text = RecipeNameBox.Text;
 
+            UpdateDisplay();
+        }
+
+        private void AddInputButton_Click(object sender, EventArgs e)
+        {
+            Resource newIngredient = new Resource("New Ingredient");
+            currentRecipe.ingredients.Add(newIngredient);
+            UpdateDisplay();
+        }
+
+        private void DeleteInputButton_Click(object sender, EventArgs e)
+        {
+            if (IngredientListView.SelectedItems.Count <= 0) return;
+
+            string resourceName = IngredientListView.SelectedItems[0].Text;
+            currentRecipe.DeleteIngredientByName(resourceName);
             UpdateDisplay();
         }
     }
