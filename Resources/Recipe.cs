@@ -28,18 +28,28 @@ namespace GoldFinder.Resources
 
         public void DeleteIngredientByName(string name)
         {
+            DeleteResourceFromListByName(ingredients, name);
+        }
+
+        public void DeleteOutputByName(string name)
+        {
+            DeleteResourceFromListByName(output, name);
+        }
+
+        private void DeleteResourceFromListByName(List<Resource> list, string name)
+        {
             List<Resource> toDelete = new List<Resource>();
-            foreach(Resource ingredient in ingredients)
+            foreach(Resource resource in list)
             {
-                if(ingredient.name == name)
+                if(resource.name == name)
                 {
-                    toDelete.Add(ingredient);
+                    toDelete.Add(resource);
                 }
             }
 
-            foreach(Resource delete in toDelete)
+            foreach(Resource resource in toDelete)
             {
-                ingredients.Remove(delete);
+                list.Remove(resource);
             }
         }
     }

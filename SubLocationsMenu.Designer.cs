@@ -197,6 +197,7 @@ namespace GoldFinder
             this.AddOutputButton.TabIndex = 11;
             this.AddOutputButton.Text = "Add Output";
             this.AddOutputButton.UseVisualStyleBackColor = true;
+            this.AddOutputButton.Click += new System.EventHandler(this.AddOutputButton_Click);
             // 
             // DeleteOutputButton
             // 
@@ -206,6 +207,7 @@ namespace GoldFinder
             this.DeleteOutputButton.TabIndex = 11;
             this.DeleteOutputButton.Text = "Delete Output";
             this.DeleteOutputButton.UseVisualStyleBackColor = true;
+            this.DeleteOutputButton.Click += new System.EventHandler(this.DeleteOutputButton_Click);
             // 
             // SubLocationsMenu
             // 

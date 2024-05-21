@@ -32,6 +32,8 @@ namespace GoldFinder
             RecipeListView.LabelEdit = false;
             IngredientListView.View = View.List;
             IngredientListView.LabelEdit = false;
+            OutputListView.View = View.List;
+            OutputListView.LabelEdit = false;
             currentLocation = inLocation;
             UpdateDisplay();
         }
@@ -60,6 +62,7 @@ namespace GoldFinder
             SubLocationList.Clear();
             RecipeListView.Clear();
             IngredientListView.Clear();
+            OutputListView.Clear();
 
             foreach (Sublocation subLocation in currentLocation.subLocations)
             {
@@ -84,6 +87,12 @@ namespace GoldFinder
                 foreach(Resource ingredient in currentRecipe.ingredients)
                 {
                     IngredientListView.Items.Add(ingredient.name);
+                }
+
+                foreach(Resource output in currentRecipe.output)
+                {
+                    Console.WriteLine(output.name);
+                    OutputListView.Items.Add(output.name);
                 }
             }
         }
@@ -154,6 +163,7 @@ namespace GoldFinder
             {
                 RecipeNameBox.Text = RecipeListView.SelectedItems[0].Text;
                 SetRecipeSelection(RecipeListView.SelectedItems);
+                UpdateDisplay();
             }
         }
 
@@ -186,6 +196,22 @@ namespace GoldFinder
 
             string resourceName = IngredientListView.SelectedItems[0].Text;
             currentRecipe.DeleteIngredientByName(resourceName);
+            UpdateDisplay();
+        }
+
+        private void AddOutputButton_Click(object sender, EventArgs e)
+        {
+            Resource newOutput = new Resource("New output");
+            currentRecipe.output.Add(newOutput);
+            UpdateDisplay();
+        }
+
+        private void DeleteOutputButton_Click(object sender, EventArgs e)
+        {
+            if (OutputListView.SelectedItems.Count <= 0) return;
+
+            string outputName = OutputListView.SelectedItems[0].Text;
+            currentRecipe.DeleteOutputByName(outputName);
             UpdateDisplay();
         }
     }
