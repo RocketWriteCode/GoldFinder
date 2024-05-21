@@ -46,6 +46,7 @@ namespace GoldFinder
             this.DeleteInputButton = new System.Windows.Forms.Button();
             this.AddOutputButton = new System.Windows.Forms.Button();
             this.DeleteOutputButton = new System.Windows.Forms.Button();
+            this.IngredientNameBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // LocationName
@@ -136,7 +137,7 @@ namespace GoldFinder
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(668, 114);
+            this.label1.Location = new System.Drawing.Point(668, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 8;
@@ -145,7 +146,7 @@ namespace GoldFinder
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(796, 114);
+            this.label2.Location = new System.Drawing.Point(923, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 8;
@@ -154,18 +155,19 @@ namespace GoldFinder
             // IngredientListView
             // 
             this.IngredientListView.HideSelection = false;
-            this.IngredientListView.Location = new System.Drawing.Point(671, 130);
+            this.IngredientListView.Location = new System.Drawing.Point(671, 100);
             this.IngredientListView.Name = "IngredientListView";
-            this.IngredientListView.Size = new System.Drawing.Size(121, 308);
+            this.IngredientListView.Size = new System.Drawing.Size(121, 338);
             this.IngredientListView.TabIndex = 9;
             this.IngredientListView.UseCompatibleStateImageBehavior = false;
+            this.IngredientListView.SelectedIndexChanged += new System.EventHandler(this.IngredientListView_SelectedIndexChanged);
             // 
             // OutputListView
             // 
             this.OutputListView.HideSelection = false;
-            this.OutputListView.Location = new System.Drawing.Point(799, 130);
+            this.OutputListView.Location = new System.Drawing.Point(925, 100);
             this.OutputListView.Name = "OutputListView";
-            this.OutputListView.Size = new System.Drawing.Size(121, 308);
+            this.OutputListView.Size = new System.Drawing.Size(121, 338);
             this.OutputListView.TabIndex = 10;
             this.OutputListView.UseCompatibleStateImageBehavior = false;
             // 
@@ -181,7 +183,7 @@ namespace GoldFinder
             // 
             // DeleteInputButton
             // 
-            this.DeleteInputButton.Location = new System.Drawing.Point(671, 87);
+            this.DeleteInputButton.Location = new System.Drawing.Point(798, 59);
             this.DeleteInputButton.Name = "DeleteInputButton";
             this.DeleteInputButton.Size = new System.Drawing.Size(121, 23);
             this.DeleteInputButton.TabIndex = 11;
@@ -191,7 +193,7 @@ namespace GoldFinder
             // 
             // AddOutputButton
             // 
-            this.AddOutputButton.Location = new System.Drawing.Point(799, 59);
+            this.AddOutputButton.Location = new System.Drawing.Point(926, 59);
             this.AddOutputButton.Name = "AddOutputButton";
             this.AddOutputButton.Size = new System.Drawing.Size(121, 23);
             this.AddOutputButton.TabIndex = 11;
@@ -201,7 +203,7 @@ namespace GoldFinder
             // 
             // DeleteOutputButton
             // 
-            this.DeleteOutputButton.Location = new System.Drawing.Point(799, 88);
+            this.DeleteOutputButton.Location = new System.Drawing.Point(1053, 59);
             this.DeleteOutputButton.Name = "DeleteOutputButton";
             this.DeleteOutputButton.Size = new System.Drawing.Size(121, 23);
             this.DeleteOutputButton.TabIndex = 11;
@@ -209,11 +211,20 @@ namespace GoldFinder
             this.DeleteOutputButton.UseVisualStyleBackColor = true;
             this.DeleteOutputButton.Click += new System.EventHandler(this.DeleteOutputButton_Click);
             // 
+            // IngredientNameBox
+            // 
+            this.IngredientNameBox.Location = new System.Drawing.Point(798, 100);
+            this.IngredientNameBox.Name = "IngredientNameBox";
+            this.IngredientNameBox.Size = new System.Drawing.Size(121, 20);
+            this.IngredientNameBox.TabIndex = 12;
+            this.IngredientNameBox.TextChanged += new System.EventHandler(this.IngredientNameBox_TextChanged);
+            // 
             // SubLocationsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(975, 450);
+            this.ClientSize = new System.Drawing.Size(1182, 449);
+            this.Controls.Add(this.IngredientNameBox);
             this.Controls.Add(this.DeleteOutputButton);
             this.Controls.Add(this.AddOutputButton);
             this.Controls.Add(this.DeleteInputButton);
@@ -257,5 +268,6 @@ namespace GoldFinder
         private System.Windows.Forms.Button DeleteInputButton;
         private System.Windows.Forms.Button AddOutputButton;
         private System.Windows.Forms.Button DeleteOutputButton;
+        private System.Windows.Forms.TextBox IngredientNameBox;
     }
 }

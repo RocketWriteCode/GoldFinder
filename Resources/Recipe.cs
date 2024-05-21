@@ -52,5 +52,28 @@ namespace GoldFinder.Resources
                 list.Remove(resource);
             }
         }
+
+        private Resource GetResourceFromListByName(List<Resource> list, string name)
+        {
+            foreach(Resource resource in list)
+            {
+                if(resource.name == name)
+                {
+                    return resource;
+                }
+            }
+
+            return null;
+        }
+
+        public Resource GetIngredientByName(string name)
+        {
+            return GetResourceFromListByName(ingredients, name);
+        }
+
+        public Resource GetOutputByName(string name)
+        {
+            return GetResourceFromListByName(output, name);
+        }
     }
 }

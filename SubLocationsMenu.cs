@@ -17,8 +17,14 @@ namespace GoldFinder
         readonly Location currentLocation;
         Sublocation currentlySelectedSublocation;
         ListViewItem currentSublocationSelection;
+
         ListViewItem currentRecipeSelection;
         Recipe currentRecipe;
+
+        ListViewItem currentIngredientSelection;
+        ListViewItem currentOutputSelection;
+        Resource currentIngredient;
+        Resource currentOutput;
 
         public SubLocationsMenu(Location inLocation)
         {
@@ -212,6 +218,22 @@ namespace GoldFinder
 
             string outputName = OutputListView.SelectedItems[0].Text;
             currentRecipe.DeleteOutputByName(outputName);
+            UpdateDisplay();
+        }
+
+        private void IngredientNameBox_TextChanged(object sender, EventArgs e)
+        {
+            if (currentIngredient == null) return;
+
+            currentIngredient.name = IngredientNameBox.Text;
+            UpdateDisplay();
+        }
+
+        private void IngredientListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentIngredientSelection = IngredientListView.SelectedItems[0];
+            currentIngredient = currentRecipe.GetIngredientByName(currentIngredientSelection.Text);
+            IngredientNameBox.Text = currentIngredient.name;
             UpdateDisplay();
         }
     }
