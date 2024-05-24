@@ -62,5 +62,13 @@ namespace GoldFinder.Resources
 
             return result;
         }
+
+        public static Resource GetResourceByIndex(int index)
+        {
+            if (index < 0) return null;
+            if (index >= globalResources.Count) return null;
+
+            return globalResources[index];
+        }
     }
 }

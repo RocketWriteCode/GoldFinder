@@ -57,10 +57,9 @@ namespace GoldFinder.Resources
         {
             foreach(Resource resource in list)
             {
-                if(resource.name == name)
-                {
-                    return resource;
-                }
+                if (resource == null) continue;
+                if (resource.name != name) continue;
+                return resource;
             }
 
             return null;
@@ -73,6 +72,8 @@ namespace GoldFinder.Resources
 
         public void ReplaceIngredient(Resource oldIngredient, Resource newIngredient)
         {
+            if (!ingredients.Contains(oldIngredient)) return;
+
             ingredients.Remove(oldIngredient);
             ingredients.Add(newIngredient);
         }

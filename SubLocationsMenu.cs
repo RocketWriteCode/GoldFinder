@@ -115,6 +115,7 @@ namespace GoldFinder
             {                
                 foreach(Resource ingredient in currentRecipe.ingredients)
                 {
+                    if (ingredient == null) continue;
                     IngredientListView.Items.Add(ingredient.name);
                 }
 
@@ -131,7 +132,6 @@ namespace GoldFinder
             {
                 ResourceSelector.Items.Add(resource.name);
             }
-            ResourceSelector.SelectedItem = currentResourceSelection;
         }
 
         private void SublocationNameField_TextChanged(object sender, EventArgs e)
@@ -230,7 +230,9 @@ namespace GoldFinder
 
         private void AddInputButton_Click(object sender, EventArgs e)
         {
-            Resource newIngredient = new Resource("New Ingredient");
+            if (currentRecipe == null) return;
+
+            Resource newIngredient = ResourceManager.GetResourceByIndex(0);
             currentRecipe.ingredients.Add(newIngredient);
             UpdateDisplay();
         }
@@ -266,14 +268,14 @@ namespace GoldFinder
 
             currentIngredientSelection = IngredientListView.SelectedItems[0];
             currentIngredient = currentRecipe.GetIngredientByName(currentIngredientSelection.Text);
-            ResourceSelector.SelectedItem = currentIngredient.name;
         }
 
         private void ResourceSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (currentResourceSelection == ResourceSelector.SelectedItem.ToString()) return;
+            if (currentIngredientSelection == null) return;
 
-            currentRecipe.ReplaceIngredient(currentResourceSelection, ResourceSelector.Text);
+            currentRecipe.ReplaceIngredient(currentIngredientSelection.Text, ResourceSelector.Text);
             currentResourceSelection = ResourceSelector.Text;
             UpdateDisplay();
         }
