@@ -22,9 +22,7 @@ namespace GoldFinder
         Recipe currentRecipe;
 
         ListViewItem currentIngredientSelection;
-        ListViewItem currentOutputSelection;
         Resource currentIngredient;
-        Resource currentOutput;
 
         public SubLocationsMenu(Location inLocation)
         {
@@ -263,11 +261,12 @@ namespace GoldFinder
 
         private void IngredientListView_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (IngredientListView.SelectedItems.Count <= 0) return;
+
             currentIngredientSelection = IngredientListView.SelectedItems[0];
             currentIngredient = currentRecipe.GetIngredientByName(currentIngredientSelection.Text);
             IngredientNameBox.Text = currentIngredient.name;
             IngredientAmountBox.Text = currentIngredient.amount.ToString();
-            UpdateDisplay();
         }
 
         private void IngredientAmountBox_TextChanged(object sender, EventArgs e)

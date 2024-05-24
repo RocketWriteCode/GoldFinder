@@ -63,6 +63,7 @@ namespace GoldFinder
             // 
             // SubLocationList
             // 
+            this.SubLocationList.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.SubLocationList.HideSelection = false;
             this.SubLocationList.Location = new System.Drawing.Point(149, 29);
             this.SubLocationList.Name = "SubLocationList";
@@ -129,6 +130,7 @@ namespace GoldFinder
             // 
             // RecipeListView
             // 
+            this.RecipeListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.RecipeListView.HideSelection = false;
             this.RecipeListView.Location = new System.Drawing.Point(499, 29);
             this.RecipeListView.Name = "RecipeListView";
@@ -157,6 +159,7 @@ namespace GoldFinder
             // 
             // IngredientListView
             // 
+            this.IngredientListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.IngredientListView.HideSelection = false;
             this.IngredientListView.Location = new System.Drawing.Point(671, 100);
             this.IngredientListView.Name = "IngredientListView";
@@ -167,6 +170,7 @@ namespace GoldFinder
             // 
             // OutputListView
             // 
+            this.OutputListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.OutputListView.HideSelection = false;
             this.OutputListView.Location = new System.Drawing.Point(925, 100);
             this.OutputListView.Name = "OutputListView";
