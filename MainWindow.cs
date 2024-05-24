@@ -116,5 +116,11 @@ namespace GoldFinder
         {
             SaveManager.SaveToFile();
         }
+
+        private void ResourceSettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResourceSettingsWindow resourceSettings = new ResourceSettingsWindow();
+            resourceSettings.Show();
+        }
     }
 }

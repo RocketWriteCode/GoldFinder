@@ -10,13 +10,11 @@ namespace GoldFinder.Resources
     {
         public string name;
         public double priceInGold;
-        public int amount;
 
-        public Resource(string inName, double inPriceInGold, int inAmount)
+        public Resource(string inName, double inPriceInGold)
         {
             name = inName;
             priceInGold = inPriceInGold;
-            amount = inAmount;
         }
 
         public Resource(string inName)

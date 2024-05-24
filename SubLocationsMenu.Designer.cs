@@ -250,7 +250,6 @@ namespace GoldFinder
             this.IngredientAmountBox.Name = "IngredientAmountBox";
             this.IngredientAmountBox.Size = new System.Drawing.Size(121, 20);
             this.IngredientAmountBox.TabIndex = 14;
-            this.IngredientAmountBox.TextChanged += new System.EventHandler(this.IngredientAmountBox_TextChanged);
             // 
             // SubLocationsMenu
             // 

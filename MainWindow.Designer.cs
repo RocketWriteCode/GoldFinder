@@ -38,6 +38,9 @@ namespace GoldFinder
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.worldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resourceSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labourSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,7 +95,8 @@ namespace GoldFinder
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.worldToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(613, 24);
@@ -122,7 +126,29 @@ namespace GoldFinder
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
-            // Form1
+            // worldToolStripMenuItem
+            // 
+            this.worldToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.resourceSettingsToolStripMenuItem,
+            this.labourSettingsToolStripMenuItem});
+            this.worldToolStripMenuItem.Name = "worldToolStripMenuItem";
+            this.worldToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.worldToolStripMenuItem.Text = "World";
+            // 
+            // resourceSettingsToolStripMenuItem
+            // 
+            this.resourceSettingsToolStripMenuItem.Name = "resourceSettingsToolStripMenuItem";
+            this.resourceSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.resourceSettingsToolStripMenuItem.Text = "Resource Settings";
+            this.resourceSettingsToolStripMenuItem.Click += new System.EventHandler(this.ResourceSettingsToolStripMenuItem_Click);
+            // 
+            // labourSettingsToolStripMenuItem
+            // 
+            this.labourSettingsToolStripMenuItem.Name = "labourSettingsToolStripMenuItem";
+            this.labourSettingsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.labourSettingsToolStripMenuItem.Text = "Labour Settings";
+            // 
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,7 +160,7 @@ namespace GoldFinder
             this.Controls.Add(this.LocationList);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -154,6 +180,9 @@ namespace GoldFinder
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem worldToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resourceSettingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem labourSettingsToolStripMenuItem;
     }
 }
 

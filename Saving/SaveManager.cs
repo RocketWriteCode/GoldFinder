@@ -90,11 +90,11 @@ namespace GoldFinder.Saving
 
             foreach (Resource ingredient in recipe.ingredients)
             {
-                result += $"<Ingredient>\n{ingredient.name}\n{ingredient.amount}\n";
+                result += $"<Ingredient>\n{ingredient.name}\n";
             }
             foreach (Resource output in recipe.output)
             {
-                result += $"<Output>\n{output.name}\n{output.amount}\n";
+                result += $"<Output>\n{output.name}\n";
             }
             result += $"<WorkInfo>\n{recipe.workInfo.lowQualityWork}\n{recipe.workInfo.mediumQualityWork}\n{recipe.workInfo.highQualityWork}\n";
 

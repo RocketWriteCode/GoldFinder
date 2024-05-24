@@ -50,20 +50,6 @@ namespace GoldFinder.EntitySystem
             }
         }
 
-        public void AddOrRemoveResource(Resource resource, int count)
-        {
-            if (!localResources.Contains(resource)) return;
-
-            foreach(Resource listedResource in localResources)
-            {
-                if (listedResource.name != resource.name) continue;
-                listedResource.amount += count;
-
-                if (listedResource.amount >= 0) continue;
-                listedResource.amount = 0;
-            }
-        }
-
         public Recipe GetRecipeByName(string name)
         {
             foreach(Recipe recipe in recipes)
