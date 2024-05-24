@@ -79,6 +79,10 @@ namespace GoldFinder
             }
 
             currentLocation.RemoveSublocation(SubLocationList.SelectedItems[0].Text);
+            currentlySelectedSublocation = null;
+            SublocationNameField.Text = "";
+            RecipeNameBox.Text = "";
+            currentRecipe = null;
             UpdateDisplay();
         }
 
@@ -107,7 +111,7 @@ namespace GoldFinder
                 }
             }
 
-            if(currentRecipeSelection != null)
+            if(currentRecipe != null)
             {                
                 foreach(Resource ingredient in currentRecipe.ingredients)
                 {
@@ -195,6 +199,7 @@ namespace GoldFinder
         private void RecipeNameBox_TextChanged(object sender, EventArgs e)
         {
             if (currentRecipeSelection == null) return;
+            if (currentlySelectedSublocation == null) return;
 
             foreach(Recipe recipe in currentlySelectedSublocation.recipes)
             {
