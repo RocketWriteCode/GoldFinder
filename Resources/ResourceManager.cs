@@ -48,7 +48,7 @@ namespace GoldFinder.Resources
             RenameResource(target, name);
         }
 
-        static Resource GetResourceByName(string name)
+        public static Resource GetResourceByName(string name)
         {
             if (name == "" || name == null) return null;
 

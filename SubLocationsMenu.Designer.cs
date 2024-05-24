@@ -46,10 +46,10 @@ namespace GoldFinder
             this.DeleteInputButton = new System.Windows.Forms.Button();
             this.AddOutputButton = new System.Windows.Forms.Button();
             this.DeleteOutputButton = new System.Windows.Forms.Button();
-            this.IngredientNameBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.IngredientAmountBox = new System.Windows.Forms.TextBox();
+            this.ResourceSelector = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // LocationName
@@ -218,22 +218,14 @@ namespace GoldFinder
             this.DeleteOutputButton.UseVisualStyleBackColor = true;
             this.DeleteOutputButton.Click += new System.EventHandler(this.DeleteOutputButton_Click);
             // 
-            // IngredientNameBox
-            // 
-            this.IngredientNameBox.Location = new System.Drawing.Point(798, 100);
-            this.IngredientNameBox.Name = "IngredientNameBox";
-            this.IngredientNameBox.Size = new System.Drawing.Size(121, 20);
-            this.IngredientNameBox.TabIndex = 12;
-            this.IngredientNameBox.TextChanged += new System.EventHandler(this.IngredientNameBox_TextChanged);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(798, 84);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Name";
+            this.label3.Text = "Resource";
             // 
             // label4
             // 
@@ -251,15 +243,24 @@ namespace GoldFinder
             this.IngredientAmountBox.Size = new System.Drawing.Size(121, 20);
             this.IngredientAmountBox.TabIndex = 14;
             // 
+            // ResourceSelector
+            // 
+            this.ResourceSelector.FormattingEnabled = true;
+            this.ResourceSelector.Location = new System.Drawing.Point(798, 100);
+            this.ResourceSelector.Name = "ResourceSelector";
+            this.ResourceSelector.Size = new System.Drawing.Size(121, 21);
+            this.ResourceSelector.TabIndex = 15;
+            this.ResourceSelector.SelectedIndexChanged += new System.EventHandler(this.ResourceSelector_SelectedIndexChanged);
+            // 
             // SubLocationsMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 449);
+            this.Controls.Add(this.ResourceSelector);
             this.Controls.Add(this.IngredientAmountBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.IngredientNameBox);
             this.Controls.Add(this.DeleteOutputButton);
             this.Controls.Add(this.AddOutputButton);
             this.Controls.Add(this.DeleteInputButton);
@@ -303,9 +304,9 @@ namespace GoldFinder
         private System.Windows.Forms.Button DeleteInputButton;
         private System.Windows.Forms.Button AddOutputButton;
         private System.Windows.Forms.Button DeleteOutputButton;
-        private System.Windows.Forms.TextBox IngredientNameBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox IngredientAmountBox;
+        private System.Windows.Forms.ComboBox ResourceSelector;
     }
 }

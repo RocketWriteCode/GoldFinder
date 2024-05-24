@@ -71,9 +71,17 @@ namespace GoldFinder.Resources
             return GetResourceFromListByName(ingredients, name);
         }
 
-        public Resource GetOutputByName(string name)
+        public void ReplaceIngredient(Resource oldIngredient, Resource newIngredient)
         {
-            return GetResourceFromListByName(output, name);
+            ingredients.Remove(oldIngredient);
+            ingredients.Add(newIngredient);
+        }
+
+        public void ReplaceIngredient(string oldName, string newName)
+        {
+            Resource oldResource = ResourceManager.GetResourceByName(oldName);
+            Resource newResource = ResourceManager.GetResourceByName(newName);
+            ReplaceIngredient(oldResource, newResource);
         }
     }
 }

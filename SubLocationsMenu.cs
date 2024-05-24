@@ -24,6 +24,8 @@ namespace GoldFinder
         ListViewItem currentIngredientSelection;
         Resource currentIngredient;
 
+        string currentResourceSelection = "";
+
         public SubLocationsMenu(Location inLocation)
         {
             InitializeComponent();
@@ -122,6 +124,14 @@ namespace GoldFinder
                     OutputListView.Items.Add(output.name);
                 }
             }
+
+            ResourceSelector.Items.Clear();
+            List<Resource> globalResources = ResourceManager.GetAllGlobalResources();
+            foreach(Resource resource in globalResources)
+            {
+                ResourceSelector.Items.Add(resource.name);
+            }
+            ResourceSelector.SelectedItem = currentResourceSelection;
         }
 
         private void SublocationNameField_TextChanged(object sender, EventArgs e)
@@ -184,7 +194,6 @@ namespace GoldFinder
             currentlySelectedSublocation.DeleteRecipe(recipeName);
             currentRecipe = null;
 
-            IngredientNameBox.Text = "";
             IngredientAmountBox.Text = "";
             RecipeNameBox.Text = "";
             IngredientListView.Clear();
@@ -251,21 +260,22 @@ namespace GoldFinder
             UpdateDisplay();
         }
 
-        private void IngredientNameBox_TextChanged(object sender, EventArgs e)
-        {
-            if (currentIngredient == null) return;
-
-            currentIngredient.name = IngredientNameBox.Text;
-            UpdateDisplay();
-        }
-
         private void IngredientListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (IngredientListView.SelectedItems.Count <= 0) return;
 
             currentIngredientSelection = IngredientListView.SelectedItems[0];
             currentIngredient = currentRecipe.GetIngredientByName(currentIngredientSelection.Text);
-            IngredientNameBox.Text = currentIngredient.name;
+            ResourceSelector.SelectedItem = currentIngredient.name;
+        }
+
+        private void ResourceSelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (currentResourceSelection == ResourceSelector.SelectedItem.ToString()) return;
+
+            currentRecipe.ReplaceIngredient(currentResourceSelection, ResourceSelector.Text);
+            currentResourceSelection = ResourceSelector.Text;
+            UpdateDisplay();
         }
     }
 }
