@@ -181,8 +181,17 @@ namespace GoldFinder
         private void DeleteRecipeButton_Click(object sender, EventArgs e)
         {
             if (RecipeListView.SelectedItems.Count <= 0) return;
+
             string recipeName = RecipeListView.SelectedItems[0].Text;
             currentlySelectedSublocation.DeleteRecipe(recipeName);
+            currentRecipe = null;
+
+            IngredientNameBox.Text = "";
+            IngredientAmountBox.Text = "";
+            RecipeNameBox.Text = "";
+            IngredientListView.Clear();
+            OutputListView.Clear();
+
             UpdateDisplay();
         }
 
@@ -192,7 +201,6 @@ namespace GoldFinder
             {
                 SetRecipeSelection(RecipeListView.SelectedItems);
                 RecipeNameBox.Text = RecipeListView.SelectedItems[0].Text;
-                UpdateDisplay();
             }
         }
 
