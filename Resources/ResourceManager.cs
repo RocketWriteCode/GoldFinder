@@ -22,15 +22,7 @@ namespace GoldFinder.Resources
 
         public static void RemoveResource(string name)
         {
-            if (name == "" || name == null) return;
-
-            Resource toBeRemoved = null;
-
-            foreach(Resource resource in globalResources)
-            {
-                if (name != resource.name) continue;
-                toBeRemoved = resource;
-            }
+            Resource toBeRemoved = GetResourceByName(name);
 
             if (toBeRemoved == null) return;
 
@@ -42,6 +34,33 @@ namespace GoldFinder.Resources
             List<Resource> output = new List<Resource>();
             output.AddRange(globalResources);
             return output;
+        }
+
+        public static void RenameResource(Resource target, string name)
+        {
+            Resource globalTarget = GetResourceByName(target.name);
+            globalTarget.name = name;
+        }
+
+        public static void RenameResource(string targetName, string name)
+        {
+            Resource target = GetResourceByName(targetName);
+            RenameResource(target, name);
+        }
+
+        static Resource GetResourceByName(string name)
+        {
+            if (name == "" || name == null) return null;
+
+            Resource result = null;
+
+            foreach (Resource resource in globalResources)
+            {
+                if (name != resource.name) continue;
+                result = resource;
+            }
+
+            return result;
         }
     }
 }
