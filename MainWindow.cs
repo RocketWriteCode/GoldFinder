@@ -49,10 +49,8 @@ namespace GoldFinder
                 newName = $"{nameRoot} {ModifierNumber}";
                 foreach (ListViewItem location in LocationList.Items)
                 {
-                    if (newName == location.Text)
-                    {
-                        done = false;
-                    }
+                    if (newName != location.Text) continue;
+                    done = false;
                 }
                 ModifierNumber++;
             }
@@ -65,45 +63,34 @@ namespace GoldFinder
 
         private void RemoveLocationButton_Click(object sender, EventArgs e)
         {
-            if(LocationList.SelectedItems.Count <= 0)
-            {
-                return;
-            }
-
+            if (LocationList.SelectedItems.Count <= 0) return;
             LocationManager.DeleteLocation(LocationList.SelectedItems[0].Text);
             UpdateDisplay();
         }
 
         private void LocationList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(LocationList.SelectedItems.Count > 0)
-            {
-                LocationName.Text = LocationList.SelectedItems[0].Text;
-                currentSelection = LocationList.SelectedItems[0];
-            }
+            if (LocationList.SelectedItems.Count <= 0) return;
+            LocationName.Text = LocationList.SelectedItems[0].Text;
+            currentSelection = LocationList.SelectedItems[0];
         }
 
         private void LocationName_TextChanged(object sender, EventArgs e)
         {
-            if(currentSelection == null)
-            {
-                return;
-            }
+            if (currentSelection == null) return;
 
-            if(LocationManager.GetLocationByName(currentSelection.Text, out Location location))
-            {
-                location.name = LocationName.Text;
-                currentSelection.Text = LocationName.Text;
-            }
+            if (!LocationManager.GetLocationByName(currentSelection.Text, out Location location)) return;
+
+            location.name = LocationName.Text;
+            currentSelection.Text = LocationName.Text;
         }
 
         private void EditSublocationsButton_Click(object sender, EventArgs e)
         {
-            if(currentSelection != null)
-            {
-                SubLocationsMenu subLocations = new SubLocationsMenu(LocationManager.GetLocationByName(currentSelection.Text));
-                subLocations.Show();
-            }
+            if (currentSelection == null) return;
+
+            SubLocationsMenu subLocations = new SubLocationsMenu(LocationManager.GetLocationByName(currentSelection.Text));
+            subLocations.Show();
         }
 
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)

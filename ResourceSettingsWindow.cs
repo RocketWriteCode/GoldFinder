@@ -33,10 +33,8 @@ namespace GoldFinder
                 newName = $"{nameRoot} {ModifierNumber}";
                 foreach (ListViewItem resource in GlobalResourceList.Items)
                 {
-                    if (newName == resource.Text)
-                    {
-                        done = false;
-                    }
+                    if (newName != resource.Text) continue;
+                    done = false;
                 }
                 ModifierNumber++;
             }

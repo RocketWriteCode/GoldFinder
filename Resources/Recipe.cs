@@ -39,6 +39,7 @@ namespace GoldFinder.Resources
         private void DeleteResourceFromListByName(List<Resource> list, string name)
         {
             List<Resource> toDelete = new List<Resource>();
+
             foreach(Resource resource in list)
             {
                 if(resource.name == name)

@@ -23,9 +23,7 @@ namespace GoldFinder.Resources
         public static void RemoveResource(string name)
         {
             Resource toBeRemoved = GetResourceByName(name);
-
             if (toBeRemoved == null) return;
-
             RemoveResource(toBeRemoved);
         }
 

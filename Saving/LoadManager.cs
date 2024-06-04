@@ -23,10 +23,12 @@ namespace GoldFinder.Saving
 
             string path = openFileDialog.FileName;
             string data;
+
             using(StreamReader inputFile = new StreamReader(path))
             {
                 data = inputFile.ReadToEnd();
             }
+
             LocationManager.Clear();
             DeserializeData(data);
         }
@@ -37,6 +39,7 @@ namespace GoldFinder.Saving
             if (!ValidateData(tokens)) return;
 
             Stack<string> tokenStack = new Stack<string>();
+
             for(int i = tokens.Length - 1; i > 0; i--)
             {
                 tokenStack.Push(tokens[i]);
@@ -45,7 +48,6 @@ namespace GoldFinder.Saving
             while(tokenStack.Count > 0)
             {
                 string currentString = tokenStack.Pop();
-
                 switch (currentString)
                 {
                     case "<Location>":
@@ -67,7 +69,6 @@ namespace GoldFinder.Saving
             List<Sublocation> sublocations = new List<Sublocation>();
 
             bool done = false;
-
             while(!done)
             {
                 if(tokenStack.Count > 0)

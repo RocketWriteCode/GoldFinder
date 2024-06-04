@@ -32,14 +32,6 @@ namespace GoldFinder
 
             LocationName.Text = inLocation.name;
 
-            SubLocationList.View = View.List;
-            SubLocationList.LabelEdit = false;
-            RecipeListView.View = View.List;
-            RecipeListView.LabelEdit = false;
-            IngredientListView.View = View.List;
-            IngredientListView.LabelEdit = false;
-            OutputListView.View = View.List;
-            OutputListView.LabelEdit = false;
             currentLocation = inLocation;
             UpdateDisplay();
         }
@@ -57,10 +49,8 @@ namespace GoldFinder
                 newName = $"{nameRoot} {ModifierNumber}";
                 foreach (ListViewItem sublocation in SubLocationList.Items)
                 {
-                    if (newName == sublocation.Text)
-                    {
-                        done = false;
-                    }
+                    if (newName != sublocation.Text) continue;
+                    done = false;
                 }
                 ModifierNumber++;
             }
@@ -73,10 +63,7 @@ namespace GoldFinder
 
         private void RemoveSublocationButton_Click(object sender, EventArgs e)
         {
-            if(SubLocationList.SelectedItems.Count <= 0)
-            {
-                return;
-            }
+            if (SubLocationList.SelectedItems.Count <= 0) return;
 
             currentLocation.RemoveSublocation(SubLocationList.SelectedItems[0].Text);
             currentlySelectedSublocation = null;
@@ -136,27 +123,20 @@ namespace GoldFinder
 
         private void SublocationNameField_TextChanged(object sender, EventArgs e)
         {
-            if (currentSublocationSelection == null)
-            {
-                return;
-            }
+            if (currentSublocationSelection == null) return;
+            if (!currentLocation.GetSublocationByName(currentSublocationSelection.Text, out Sublocation subLocation)) return;
 
-            if (currentLocation.GetSublocationByName(currentSublocationSelection.Text, out Sublocation subLocation))
-            {
-                subLocation.name = SublocationNameField.Text;
-                currentSublocationSelection.Text = SublocationNameField.Text;
-            }
+            subLocation.name = SublocationNameField.Text;
+            currentSublocationSelection.Text = SublocationNameField.Text;
 
             UpdateDisplay();
         }
 
         private void SubLocationList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(SubLocationList.SelectedItems.Count > 0)
-            {
-                SublocationNameField.Text = SubLocationList.SelectedItems[0].Text;
-                SetSelection(SubLocationList.SelectedItems);
-            }
+            if (SubLocationList.SelectedItems.Count <= 0) return;
+            SublocationNameField.Text = SubLocationList.SelectedItems[0].Text;
+            SetSelection(SubLocationList.SelectedItems);
         }
 
         private void SetSelection(ListView.SelectedListViewItemCollection items)
@@ -204,11 +184,9 @@ namespace GoldFinder
 
         private void RecipeListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (RecipeListView.SelectedItems.Count > 0)
-            {
-                SetRecipeSelection(RecipeListView.SelectedItems);
-                RecipeNameBox.Text = RecipeListView.SelectedItems[0].Text;
-            }
+            if (RecipeListView.SelectedItems.Count <= 0) return;
+            SetRecipeSelection(RecipeListView.SelectedItems);
+            RecipeNameBox.Text = RecipeListView.SelectedItems[0].Text;
         }
 
         private void RecipeNameBox_TextChanged(object sender, EventArgs e)
@@ -218,10 +196,8 @@ namespace GoldFinder
 
             foreach(Recipe recipe in currentlySelectedSublocation.recipes)
             {
-                if(recipe.name == currentRecipeSelection.Text)
-                {
-                    recipe.name = RecipeNameBox.Text;
-                }
+                if (recipe.name != currentRecipeSelection.Text) continue;
+                recipe.name = RecipeNameBox.Text;
             }
             currentRecipeSelection.Text = RecipeNameBox.Text;
 
